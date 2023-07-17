@@ -1,0 +1,26 @@
+version: "3"
+services:
+  jcservice:
+    build: .
+    ports:
+      - 5432:8080
+    links:
+      - db
+    environment:
+      - PGPASSWORD=jcservice
+      - PGDATABASE=jcservice
+      - PGHOST=db:5432
+      - PGUSER=postgres
+    depends_on:
+      - "db"
+
+  image_downloader:
+    build: image_downloader
+    ports:
+      - 80:80
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=jcservice
+      - POSTGRES_DB=jcservice
+  
