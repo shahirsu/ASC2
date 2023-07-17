@@ -1,6 +1,6 @@
 version: "3"
 services:
-  jcservice:
+  jc1service:
     build: .
     ports:
       - 5432:8080
